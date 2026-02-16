@@ -1,0 +1,142 @@
+{
+  "project_name": "Pathfinder DSM",
+  "design_philosophy": {
+    "theme": "Cosmic Mysticism",
+    "core_concept": "Transmutation of Biology and Spirit",
+    "emotional_tone": "High-Tech, Spiritual, Infinite, Deep, Disciplined",
+    "visual_style": "Dark Mode Only, Neon Accents, Sacred Geometry Overlays"
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Orbitron, sans-serif",
+      "import_url": "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap",
+      "weights": ["500", "700", "900"],
+      "letter_spacing": "tracking-wider",
+      "usage": "All main headers (h1-h3), timer digits, and key metrics."
+    },
+    "body": {
+      "font_family": "Inter, sans-serif",
+      "weights": ["300", "400", "500"],
+      "usage": "Paragraphs, lists, form inputs, secondary text."
+    },
+    "mono": {
+      "font_family": "JetBrains Mono, monospace",
+      "usage": "Data snippets, time stamps, code-like aesthetic elements."
+    }
+  },
+  "colors": {
+    "background": {
+      "base": "#000000",
+      "surface": "#0A0A0A",
+      "surface_highlight": "#121212",
+      "overlay": "rgba(0, 0, 0, 0.85)"
+    },
+    "brand": {
+      "cyan_electric": "#00FFFF",
+      "violet_organic": "#8A2BE2",
+      "gold_solar": "#FFD700"
+    },
+    "text": {
+      "primary": "#EDEDED",
+      "secondary": "#A1A1AA",
+      "muted": "#52525B",
+      "accent": "#00FFFF"
+    },
+    "utility": {
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "error": "#EF4444",
+      "info": "#3B82F6"
+    },
+    "progression_stages": {
+      "stage_1_biological": "#00FFFF",
+      "stage_2_mental": "#8A2BE2",
+      "stage_3_spiritual": "#FFD700"
+    }
+  },
+  "visual_enhancers": {
+    "shadows": {
+      "neon_cyan": "0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)",
+      "neon_violet": "0 0 10px rgba(138, 43, 226, 0.5), 0 0 20px rgba(138, 43, 226, 0.3)",
+      "neon_gold": "0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4)",
+      "card_hover": "0 10px 40px -10px rgba(0,0,0,0.5)"
+    },
+    "borders": {
+      "subtle": "1px solid #27272A",
+      "active": "1px solid #52525B",
+      "glow_cyan": "1px solid rgba(0, 255, 255, 0.5)",
+      "glow_gold": "1px solid rgba(255, 215, 0, 0.5)"
+    },
+    "backgrounds": {
+      "flower_of_life": "SVG overlay with opacity-10 rotation animation",
+      "noise": "url('data:image/svg+xml;base64,...') opacity-5"
+    }
+  },
+  "components": {
+    "hero_ring": {
+      "description": "Central SVG circular progress bar. Thickness: 4-6px. Glows based on current stage color.",
+      "animation": "Pulse effect on the active tip of the ring.",
+      "interactions": "Click center to toggle details."
+    },
+    "milestone_icons": {
+      "library": "lucide-react",
+      "mapping": {
+        "Divine Oneness": "Globe",
+        "Vibration": "Activity",
+        "Action": "Zap",
+        "Correspondence": "Repeat",
+        "Cause and Effect": "ArrowRightLeft",
+        "Compensation": "Scale",
+        "Attraction": "Magnet",
+        "Transmutation": "Flame",
+        "Relativity": "GitCompare",
+        "Polarity": "BatteryCharging",
+        "Rhythm": "Music",
+        "Gender": "CircleDashed"
+      },
+      "style": "Icon inside a hexagonal border. Active state: Glows with stage color."
+    },
+    "granite_coach_chat": {
+      "avatar_style": "Hexagonal mask, mystical stone face image.",
+      "bubble_user": "bg-zinc-900 border border-zinc-800 text-right rounded-tr-none",
+      "bubble_ai_flesh": "bg-cyan-950/30 border border-cyan-800/50 text-cyan-100 rounded-tl-none",
+      "bubble_ai_spirit": "bg-violet-950/30 border border-violet-800/50 text-violet-100 rounded-tl-none"
+    },
+    "time_travel_modal": {
+      "style": "Glassmorphism popup. Inputs look like digital clock segments.",
+      "background": "bg-black/80 backdrop-blur-xl border border-white/10"
+    }
+  },
+  "layout_strategies": {
+    "dashboard": {
+      "grid": "grid-cols-1 md:grid-cols-12 gap-6 p-6 md:p-12",
+      "hero_position": "col-span-12 md:col-span-6 md:col-start-4 row-span-2 flex justify-center items-center aspect-square",
+      "stats_position": "Surrounding the hero ring in bento-box style cards."
+    },
+    "landing_page": {
+      "hero": "Full height 100vh. Centered 'Pathfinder DSM' logo (text). Background: Rotating Flower of Life + Particles.",
+      "features": "Zig-zag layout (Text Left/Image Right, then swapped)."
+    }
+  },
+  "image_urls": {
+    "background_texture": "https://images.unsplash.com/photo-1672607608404-9fb2e336cbbb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHw0fHxjb3NtaWMlMjBzYWNyZWQlMjBnZW9tZXRyeSUyMGJhY2tncm91bmQlMjBibGFjayUyMGdvbGR8ZW58MHx8fHwxNzcxMjI4MDc4fDA&ixlib=rb-4.1.0&q=85",
+    "granite_coach_avatar": "https://images.unsplash.com/photo-1726486190898-b5f7ea74891d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwxfHxteXN0aWNhbCUyMHN0b25lJTIwZmFjZSUyMHN0YXR1ZSUyMGZ1dHVyaXN0aWMlMjBkYXJrJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzcxMjI4MDc5fDA&ixlib=rb-4.1.0&q=85"
+  },
+  "instructions_to_main_agent": [
+    "INSTALL: yarn add lucide-react framer-motion tsparticles @tsparticles/react @tsparticles/slim date-fns",
+    "THEME: Ensure 'dark' class is always applied to the html element. Force dark mode.",
+    "FONTS: Import Orbitron from Google Fonts in index.css.",
+    "PARTICLES: Use tsparticles for the 'Golden Solar Flare' effect (Stage 3).",
+    "FLOWER OF LIFE: Create a 'FlowerOfLife' component using SVG. Animate rotation slowly (120s per rotation).",
+    "DATA-TESTID: Add data-testid to all buttons, inputs, and the hero ring.",
+    "NOISE: Add a fixed position div with pointer-events-none z-50 for a subtle film grain overlay on the whole app.",
+    "BACKEND: Update any user model to store 'fasting_start_time' and '12_laws_unlocked' array."
+  ],
+  "universal_guidelines": [
+    "Don't make generic centered layouts.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters.",
+    "NEVER use AI assistant Emojis.",
+    "Use 2-3x more spacing than feels comfortable."
+  ]
+}
