@@ -252,9 +252,20 @@ const Landing = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-violet-400 mb-4">
-              The Pathfinder Codex
-            </h2>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <img 
+                src="/pathfinder-logo.png" 
+                alt="" 
+                className="w-8 h-8"
+                style={{ 
+                  filter: 'invert(64%) sepia(70%) saturate(5000%) hue-rotate(250deg) brightness(100%) contrast(100%)',
+                  opacity: 0.9
+                }}
+              />
+              <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-violet-400">
+                The Pathfinder Codex
+              </h2>
+            </div>
             <p className="text-zinc-500 max-w-xl mx-auto">
               12 Laws of Transmutation - Biological & Spiritual Alignment
             </p>
@@ -307,9 +318,20 @@ const Landing = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-yellow-400 mb-4">
-              Choose Your Path
-            </h2>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <img 
+                src="/pathfinder-logo.png" 
+                alt="" 
+                className="w-8 h-8"
+                style={{ 
+                  filter: 'invert(85%) sepia(60%) saturate(500%) hue-rotate(5deg) brightness(105%) contrast(100%)',
+                  opacity: 0.9
+                }}
+              />
+              <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-yellow-400">
+                Choose Your Path
+              </h2>
+            </div>
             <p className="text-zinc-500 max-w-xl mx-auto">
               Begin your journey free, or unlock unlimited potential with Pro.
             </p>
