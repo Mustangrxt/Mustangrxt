@@ -268,7 +268,7 @@ const Profile = ({ user, onRefreshUser }) => {
             >
               <div className="text-center mb-6">
                 <Crown className="w-12 h-12 text-violet-400 mx-auto mb-4" />
-                <h2 className="font-orbitron text-2xl text-violet-400 mb-2">Granite Protocol Pro</h2>
+                <h2 className="font-orbitron text-2xl font-bold tracking-wider text-violet-400 mb-2">THE GRANITE FAST PROTOCOL PRO</h2>
                 <p className="text-zinc-500">Unlock your full potential</p>
               </div>
 
