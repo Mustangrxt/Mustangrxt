@@ -414,6 +414,15 @@ const Dashboard = ({ user, onLogout }) => {
                     <History className="w-4 h-4 mr-3 text-violet-400" />
                     View History
                   </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-zinc-800 text-zinc-300 justify-start hover:border-yellow-400"
+                    onClick={() => { setCompletedHours(24); setIsFoodPyramidOpen(true); }}
+                    data-testid="preview-food-pyramid"
+                  >
+                    <Award className="w-4 h-4 mr-3 text-yellow-400" />
+                    Preview Food Pyramid
+                  </Button>
                 </div>
               </motion.div>
 
