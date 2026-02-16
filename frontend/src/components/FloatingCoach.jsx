@@ -212,8 +212,13 @@ const FloatingCoach = ({ user }) => {
                   <div className="w-16 h-16 rounded-full bg-cyan-400/10 flex items-center justify-center mx-auto mb-4">
                     <MessageSquare className="w-8 h-8 text-cyan-400" />
                   </div>
-                  <p className="text-zinc-400 text-sm">Ask the Granite Coach anything about your transmutation journey.</p>
-                  <p className="text-zinc-600 text-xs mt-2">Receive insights on both the Flesh and the Spirit.</p>
+                  <p className="text-zinc-400 text-sm">Ask the Granite Coach anything.</p>
+                  <p className="text-zinc-600 text-xs mt-2">Fasting, navigation, or any question.</p>
+                  <div className="mt-4 text-left space-y-1">
+                    <p className="text-zinc-600 text-xs">Try: "Take me to the welcome page"</p>
+                    <p className="text-zinc-600 text-xs">Try: "What happens at hour 16?"</p>
+                    <p className="text-zinc-600 text-xs">Try: "How do I stay hydrated?"</p>
+                  </div>
                 </div>
               )}
 
@@ -227,18 +232,34 @@ const FloatingCoach = ({ user }) => {
                     </div>
                   )}
 
+                  {msg.role === 'navigation' && (
+                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-2">
+                      <Navigation className="w-4 h-4 text-emerald-400" />
+                      <p className="text-emerald-400 text-sm">{msg.content}</p>
+                    </div>
+                  )}
+
                   {msg.role === 'assistant' && (
                     <div className="space-y-2">
-                      {/* The Flesh */}
-                      <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/30">
-                        <div className="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">The Flesh</div>
-                        <p className="text-zinc-300 text-sm">{msg.flesh}</p>
-                      </div>
-                      {/* The Spirit */}
-                      <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/30">
-                        <div className="text-violet-400 text-xs font-bold uppercase tracking-wider mb-1">The Spirit</div>
-                        <p className="text-zinc-300 text-sm">{msg.spirit}</p>
-                      </div>
+                      {/* Check if it's a dual response or single */}
+                      {msg.flesh && msg.spirit ? (
+                        <>
+                          {/* The Flesh */}
+                          <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/30">
+                            <div className="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">The Flesh</div>
+                            <p className="text-zinc-300 text-sm">{msg.flesh}</p>
+                          </div>
+                          {/* The Spirit */}
+                          <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/30">
+                            <div className="text-violet-400 text-xs font-bold uppercase tracking-wider mb-1">The Spirit</div>
+                            <p className="text-zinc-300 text-sm">{msg.spirit}</p>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="p-3 rounded-xl bg-zinc-800/50 border border-zinc-700">
+                          <p className="text-zinc-300 text-sm">{msg.content || msg.flesh}</p>
+                        </div>
+                      )}
                     </div>
                   )}
 
