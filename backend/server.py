@@ -80,25 +80,128 @@ class PaymentStatusResponse(BaseModel):
     payment_status: str
     is_pro: bool
 
-# ==================== 12 LAWS OF THE UNIVERSE ====================
+# ==================== THE PATHFINDER CODEX: 12 LAWS OF TRANSMUTATION ====================
 
 TWELVE_LAWS = [
-    {"name": "Divine Oneness", "hours": 1, "description": "All is one. Your cells begin their sacred journey."},
-    {"name": "Vibration", "hours": 4, "description": "Everything vibrates. Your frequency rises."},
-    {"name": "Action", "hours": 8, "description": "Movement creates change. Ketones begin forming."},
-    {"name": "Correspondence", "hours": 12, "description": "As above, so below. Growth hormone surges."},
-    {"name": "Cause and Effect", "hours": 16, "description": "Every action has a reaction. Autophagy initiates."},
-    {"name": "Compensation", "hours": 20, "description": "You receive what you give. Fat burning peaks."},
-    {"name": "Attraction", "hours": 24, "description": "Like attracts like. Cellular renewal accelerates."},
-    {"name": "Transmutation", "hours": 36, "description": "Energy transforms. Deep autophagy engaged."},
-    {"name": "Relativity", "hours": 48, "description": "All is relative. Stem cells activate."},
-    {"name": "Polarity", "hours": 60, "description": "Opposites are identical. Immune reset begins."},
-    {"name": "Rhythm", "hours": 72, "description": "Everything flows. Full cellular regeneration."},
-    {"name": "Gender", "hours": 100, "description": "Balance achieved. Transcendence complete."},
+    {
+        "law_number": 1,
+        "name": "Divine Oneness",
+        "phase": "0-8 Hours",
+        "hours_start": 0,
+        "hours_end": 8,
+        "title": "The Connection",
+        "breakdown": "Your body is not separate from your mind. As your blood sugar stabilizes, you realize that every choice you make ripples through your entire existence."
+    },
+    {
+        "law_number": 2,
+        "name": "Vibration",
+        "phase": "9-16 Hours",
+        "hours_start": 9,
+        "hours_end": 16,
+        "title": "The Shift",
+        "breakdown": "Everything is in motion. Your body is shifting its frequency from 'sugar-burning' to 'fat-burning,' elevating your metabolic vibration."
+    },
+    {
+        "law_number": 3,
+        "name": "Action",
+        "phase": "17-24 Hours",
+        "hours_start": 17,
+        "hours_end": 24,
+        "title": "The Sacrifice",
+        "breakdown": "Growth requires movement. Autophagy begins here; you are actively destroying the old to make room for the new."
+    },
+    {
+        "law_number": 4,
+        "name": "Correspondence",
+        "phase": "25-32 Hours",
+        "hours_start": 25,
+        "hours_end": 32,
+        "title": "The Mirror",
+        "breakdown": "'As within, so without.' Your internal cellular repair is a direct reflection of your external discipline and Will."
+    },
+    {
+        "law_number": 5,
+        "name": "Cause & Effect",
+        "phase": "33-40 Hours",
+        "hours_start": 33,
+        "hours_end": 40,
+        "title": "The Harvest",
+        "breakdown": "Every hour of hunger is a 'cause' that produces the 'effect' of massive Growth Hormone surges. You reap what you sow."
+    },
+    {
+        "law_number": 6,
+        "name": "Compensation",
+        "phase": "41-48 Hours",
+        "hours_start": 41,
+        "hours_end": 48,
+        "title": "The Reward",
+        "breakdown": "The Universe rewards sacrifice. As the brain creates BDNF, you are compensated with elite mental clarity and focus."
+    },
+    {
+        "law_number": 7,
+        "name": "Attraction",
+        "phase": "49-56 Hours",
+        "hours_start": 49,
+        "hours_end": 56,
+        "title": "The Magnet",
+        "breakdown": "Peak Autophagy. As you purge toxins, your vessel becomes clean, attracting higher thoughts and creative energy."
+    },
+    {
+        "law_number": 8,
+        "name": "Perpetual Transmutation",
+        "phase": "57-64 Hours",
+        "hours_start": 57,
+        "hours_end": 64,
+        "title": "The Alchemy",
+        "breakdown": "Energy cannot be destroyed. You are transmuting physical hunger into raw, usable spiritual power."
+    },
+    {
+        "law_number": 9,
+        "name": "Relativity",
+        "phase": "65-72 Hours",
+        "hours_start": 65,
+        "hours_end": 72,
+        "title": "The Perspective",
+        "breakdown": "Your 'struggle' is relative. Compared to the strength of your Spirit, the body's temporary hunger is an illusion."
+    },
+    {
+        "law_number": 10,
+        "name": "Polarity",
+        "phase": "73-80 Hours",
+        "hours_start": 73,
+        "hours_end": 80,
+        "title": "The Duality",
+        "breakdown": "Hunger and Fullness are two sides of one coin. You cannot know true Abundance until you have mastered the Void."
+    },
+    {
+        "law_number": 11,
+        "name": "Rhythm",
+        "phase": "81-90 Hours",
+        "hours_start": 81,
+        "hours_end": 90,
+        "title": "The Pulse",
+        "breakdown": "You have exited the chaos of modern eating and entered the natural rhythm of the Earth. You are in sync with the All."
+    },
+    {
+        "law_number": 12,
+        "name": "Gender (Creation)",
+        "phase": "91-100+ Hours",
+        "hours_start": 91,
+        "hours_end": 100,
+        "title": "The Birth",
+        "breakdown": "Stem Cell Regeneration. You have birthed a new biological version of yourself. You are the Creator of your own Vessel."
+    },
 ]
 
 def get_unlocked_laws(hours: float) -> List[str]:
-    return [law["name"] for law in TWELVE_LAWS if hours >= law["hours"]]
+    return [law["name"] for law in TWELVE_LAWS if hours >= law["hours_start"]]
+
+def get_current_law(hours: float) -> dict:
+    """Get the current law based on hours elapsed"""
+    for law in reversed(TWELVE_LAWS):
+        if hours >= law["hours_start"]:
+            return law
+    return TWELVE_LAWS[0]
 
 # ==================== AUTH HELPERS ====================
 
@@ -806,7 +909,7 @@ async def get_twelve_laws():
 
 @api_router.get("/")
 async def root():
-    return {"message": "Pathfinder DSM API - Transmutation Tracker"}
+    return {"message": "The Granite Fast Protocol API - Transmutation Tracker"}
 
 # Include the router in the main app
 app.include_router(api_router)
