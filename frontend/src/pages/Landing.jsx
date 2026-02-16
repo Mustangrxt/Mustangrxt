@@ -357,11 +357,17 @@ const Landing = () => {
                   </div>
                 )}
                 
-                <h3 className={`font-orbitron text-xl font-bold mb-2 ${
-                  plan.highlighted ? 'text-violet-400' : 'text-zinc-100'
-                }`}>
-                  {plan.name}
-                </h3>
+                {plan.highlighted ? (
+                  <h3 className="font-orbitron text-2xl font-bold tracking-wider mb-2">
+                    <span className="text-cyan-400 text-glow-cyan">GRANITE</span>
+                    <span className="text-zinc-300 ml-2">PROTOCOL</span>
+                    <span className="text-yellow-400 text-glow-gold ml-2">PRO</span>
+                  </h3>
+                ) : (
+                  <h3 className="font-orbitron text-xl font-bold mb-2 text-zinc-100">
+                    {plan.name}
+                  </h3>
+                )}
                 
                 <div className="flex items-baseline gap-1 mb-6">
                   <span className="text-4xl font-bold text-zinc-100">{plan.price}</span>
