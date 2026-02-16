@@ -1,8 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Google Sans font-face declarations */
+@font-face {
+    font-family: 'Google Sans';
+    src: url('https://fonts.gstatic.com/s/googlesans/v58/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrwEIJllpyk.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Google Sans';
+    src: url('https://fonts.gstatic.com/s/googlesans/v58/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrwEIJl1pyk.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Google Sans';
+    src: url('https://fonts.gstatic.com/s/googlesans/v58/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrwEIJmZoSk.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
 
 :root {
     --background: 0 0% 0%;
@@ -44,7 +69,7 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Outfit', 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #000000;
@@ -52,15 +77,15 @@ body {
     min-height: 100vh;
 }
 
-/* Orbitron for headings */
+/* Google Sans for all text */
 h1, h2, h3, .font-orbitron {
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 0.05em;
+    font-family: 'Google Sans', sans-serif;
+    letter-spacing: 0.02em;
 }
 
-/* Outfit for body text */
+/* Google Sans for body text */
 p, span, div, button, input, textarea, label {
-    font-family: 'Outfit', 'Google Sans', sans-serif;
+    font-family: 'Google Sans', sans-serif;
 }
 
 /* JetBrains Mono for data */
