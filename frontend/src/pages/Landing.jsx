@@ -27,32 +27,38 @@ const Landing = () => {
     {
       icon: Clock,
       title: "Transmutation Timer",
-      description: "Track your journey with a real-time Hero Ring that evolves through the 12 Laws of the Universe."
+      description: "Track your journey with a real-time Hero Ring that evolves through the 12 Laws of the Universe.",
+      color: "cyan"
     },
     {
       icon: Sparkles,
       title: "The Pathfinder Codex",
-      description: "Unlock the 12 Laws of Transmutation with detailed biological and spiritual breakdowns."
+      description: "Unlock the 12 Laws of Transmutation with detailed biological and spiritual breakdowns.",
+      color: "violet"
     },
     {
       icon: Brain,
       title: "Time Travel",
-      description: "Forgot to start? Backdate your transmutation to the actual moment you began."
+      description: "Forgot to start? Backdate your transmutation to the actual moment you began.",
+      color: "orange"
     },
     {
       icon: MessageSquare,
       title: "The Granite Coach",
-      description: "AI-powered guidance providing insights on both the Flesh and the Spirit of your journey."
+      description: "AI-powered guidance providing insights on both the Flesh and the Spirit of your journey.",
+      color: "emerald"
     },
     {
       icon: Flame,
       title: "100hr Transcendence",
-      description: "Achieve the ultimate state and unlock Stem Cell Regeneration - become the Creator of your Vessel."
+      description: "Achieve the ultimate state and unlock Stem Cell Regeneration - become the Creator of your Vessel.",
+      color: "yellow"
     },
     {
       icon: Crown,
       title: "Protocol Pro",
-      description: "Unlimited AI coaching and advanced analytics for serious practitioners."
+      description: "Unlimited AI coaching and advanced analytics for serious practitioners.",
+      color: "rose"
     }
   ];
 
