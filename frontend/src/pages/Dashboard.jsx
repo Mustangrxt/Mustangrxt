@@ -5,6 +5,7 @@ import { HeroRing } from '../components/HeroRing';
 import { MilestoneIcons } from '../components/MilestoneIcons';
 import { GoldenParticles } from '../components/GoldenParticles';
 import { TimeTravelModal } from '../components/TimeTravelModal';
+import { FoodPyramidModal } from '../components/FoodPyramidModal';
 import { FlowerOfLife } from '../components/FlowerOfLife';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
