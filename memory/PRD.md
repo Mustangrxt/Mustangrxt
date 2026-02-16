@@ -85,6 +85,11 @@ Build a Fasting App called "The Granite Fast Protocol" with:
 - [x] Styled "Granite Protocol Pro" subscription tier on Landing page with matching title style
 - [x] Applied cyan glow to "GRANITE", white for "PROTOCOL", and gold glow to "PRO"
 - [x] Verified consistent styling exists on Profile page
+- [x] Created Vibrational Food Pyramid modal that displays when ending a transmutation
+  - 5-tier pyramid: Divine Light → Solar Energy → Earth's Vitality → Grounded Nourishment → Dense Matter
+  - Grass-fed meats and wild fish placed in "Earth's Vitality" (High Vibration) tier
+  - Includes sacred quote about keeping the body pure
+  - Automatically shows during eating window after transmutation ends
 
 ### Backend
 - Complete FastAPI server with all endpoints
