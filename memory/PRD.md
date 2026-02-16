@@ -80,6 +80,11 @@ Build a Fasting App called "The Granite Fast Protocol" with:
 
 ## What's Been Implemented (Feb 16, 2026)
 
+### Latest Update (Feb 16, 2026)
+- [x] Styled "Granite Protocol Pro" subscription tier on Landing page with matching title font (Orbitron)
+- [x] Applied cyan glow to "GRANITE", white for "PROTOCOL", and gold glow to "PRO"
+- [x] Verified consistent styling exists on Profile page
+
 ### Backend
 - Complete FastAPI server with all endpoints
 - MongoDB models for all collections
