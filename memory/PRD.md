@@ -38,6 +38,11 @@ Build a Fasting App called "The Granite Fast Protocol" with:
 - [x] Color progression (Cyan → Violet → Gold)
 - [x] Deep Space Black theme with sacred geometry
 - [x] User profile with subscription management
+- [x] Goal/Intent tracking (SHRED, CLARITY, HEAL, REBIRTH)
+- [x] Streak tracking (current & longest)
+- [x] Hydration tracker with electrolyte reminders
+- [x] Floating Coach chat widget (app-wide access)
+- [x] Onboarding flow with Intent selection
 
 ### Nice to Have (P2)
 - [ ] Notifications/reminders
