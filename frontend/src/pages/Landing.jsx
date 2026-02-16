@@ -133,7 +133,7 @@ const Landing = () => {
             <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
               Transform your relationship with fasting.
               <br />
-              <span className="text-cyan-400">Master</span> your body goals through the 12 Laws of the Universe.
+              <span className="text-cyan-400">Master</span> your body goals through the <span className="text-cyan-400">12 Laws of the Universe</span>.
             </p>
             
             <p className="text-zinc-600 text-sm md:text-base max-w-xl mx-auto mb-12">
