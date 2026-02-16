@@ -65,9 +65,9 @@ export const MilestoneIcons = ({ currentHours = 0 }) => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.05 }}
               onClick={() => handleLawClick(law, isUnlocked)}
-              data-testid={`milestone-${law.name.toLowerCase().replace(/\s+/g, '-')}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              data-testid={`milestone-${law.name.toLowerCase().replace(/\s+/g, '-').replace(/[()&]/g, '')}`}
+              tabIndex={0}
+              role="button"
             >
               {/* Hexagonal container */}
               <div 
