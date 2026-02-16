@@ -679,8 +679,15 @@ IMPORTANT:
         system_message=system_message
     ).with_model("gemini", "gemini-3-flash-preview")
     
-    # Format prompt
-    prompt = f"""User question: {data.message}
+    # Format prompt based on question type
+    is_fasting_question = any(kw in data.message.lower() for kw in [
+        'fast', 'hour', 'eat', 'food', 'hunger', 'ketosis', 'autophagy', 
+        'body', 'weight', 'fat', 'transmut', 'law', 'spirit', 'flesh',
+        'hydrat', 'water', 'electrolyte', 'salt', 'mineral'
+    ])
+    
+    if is_fasting_question:
+        prompt = f"""User question: {data.message}
 
 Respond in exactly this format:
 THE FLESH:
@@ -688,6 +695,10 @@ THE FLESH:
 
 THE SPIRIT:
 [Your spiritual response connecting to one of the 12 Laws here]"""
+    else:
+        prompt = f"""User question: {data.message}
+
+Provide a helpful, direct response. If it relates to the app, be informative about features."""
     
     user_message = UserMessage(text=prompt)
     response_text = await chat.send_message(user_message)
