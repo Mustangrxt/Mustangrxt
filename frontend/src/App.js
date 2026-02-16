@@ -152,6 +152,10 @@ const AppRouter = () => {
           </ProtectedRoute>
         } 
       />
+      <Route 
+        path="/food-pyramid" 
+        element={<FoodPyramidPreview />} 
+      />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
