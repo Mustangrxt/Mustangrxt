@@ -165,6 +165,10 @@ const AppRouter = () => {
         path="/food-pyramid" 
         element={<FoodPyramidPreview />} 
       />
+      <Route 
+        path="/initiation-preview" 
+        element={<Initiation />} 
+      />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
