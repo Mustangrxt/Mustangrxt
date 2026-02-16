@@ -125,53 +125,58 @@ const AppRouter = () => {
   }
 
   return (
-    <Routes>
-      <Route 
-        path="/" 
-        element={user ? <Navigate to="/dashboard" replace /> : <Landing />} 
-      />
-      <Route 
-        path="/initiation" 
-        element={
-          <ProtectedRoute user={user} isLoading={isLoading}>
-            <Initiation />
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/dashboard" 
-        element={
-          <ProtectedRoute user={user} isLoading={isLoading}>
-            <Dashboard user={user || location.state?.user} onLogout={handleLogout} />
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/coach" 
-        element={
-          <ProtectedRoute user={user} isLoading={isLoading}>
-            <Coach user={user || location.state?.user} />
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/profile" 
-        element={
-          <ProtectedRoute user={user} isLoading={isLoading}>
-            <Profile user={user || location.state?.user} onRefreshUser={refreshUser} />
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/food-pyramid" 
-        element={<FoodPyramidPreview />} 
-      />
-      <Route 
-        path="/initiation-preview" 
-        element={<Initiation />} 
-      />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route 
+          path="/" 
+          element={user ? <Navigate to="/dashboard" replace /> : <Landing />} 
+        />
+        <Route 
+          path="/initiation" 
+          element={
+            <ProtectedRoute user={user} isLoading={isLoading}>
+              <Initiation />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute user={user} isLoading={isLoading}>
+              <Dashboard user={user || location.state?.user} onLogout={handleLogout} />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/coach" 
+          element={
+            <ProtectedRoute user={user} isLoading={isLoading}>
+              <Coach user={user || location.state?.user} />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/profile" 
+          element={
+            <ProtectedRoute user={user} isLoading={isLoading}>
+              <Profile user={user || location.state?.user} onRefreshUser={refreshUser} />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/food-pyramid" 
+          element={<FoodPyramidPreview />} 
+        />
+        <Route 
+          path="/initiation-preview" 
+          element={<Initiation />} 
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      
+      {/* Floating Coach - Available throughout the app */}
+      <FloatingCoach user={user} />
+    </>
   );
 };
 
