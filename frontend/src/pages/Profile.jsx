@@ -216,7 +216,7 @@ const Profile = ({ user, onRefreshUser }) => {
                 <div className="p-4 rounded-lg bg-violet-500/10 border border-violet-500/30">
                   <div className="flex items-center gap-2 mb-2">
                     <Crown className="w-5 h-5 text-violet-400" />
-                    <span className="text-violet-400 font-orbitron text-sm">PATHFINDER PRO</span>
+                    <span className="text-violet-400 font-orbitron text-sm">GRANITE PROTOCOL PRO</span>
                   </div>
                   <div className="text-zinc-500 text-xs">
                     {user.pro_plan === 'yearly' ? 'Annual' : 'Monthly'} Plan
@@ -268,7 +268,7 @@ const Profile = ({ user, onRefreshUser }) => {
             >
               <div className="text-center mb-6">
                 <Crown className="w-12 h-12 text-violet-400 mx-auto mb-4" />
-                <h2 className="font-orbitron text-2xl text-violet-400 mb-2">Pathfinder Pro</h2>
+                <h2 className="font-orbitron text-2xl text-violet-400 mb-2">Granite Protocol Pro</h2>
                 <p className="text-zinc-500">Unlock your full potential</p>
               </div>
 

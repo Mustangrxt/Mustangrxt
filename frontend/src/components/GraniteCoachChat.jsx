@@ -186,7 +186,7 @@ export const GraniteCoachChat = ({
             <AlertCircle className="w-5 h-5 text-red-400" />
             <div>
               <div className="text-red-400 font-medium text-sm">Daily limit reached</div>
-              <div className="text-zinc-500 text-xs">Upgrade to Pathfinder Pro for unlimited access</div>
+              <div className="text-zinc-500 text-xs">Upgrade to Granite Protocol Pro for unlimited access</div>
             </div>
           </div>
         ) : (
