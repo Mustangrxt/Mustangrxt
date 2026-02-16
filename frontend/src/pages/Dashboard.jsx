@@ -170,8 +170,8 @@ const Dashboard = ({ user, onLogout }) => {
       {/* Header */}
       <header className="relative z-10 flex items-center justify-between p-6 border-b border-zinc-900">
         <div className="font-orbitron text-xl tracking-wider">
-          <span className="text-cyan-400">PATHFINDER</span>
-          <span className="text-zinc-600 ml-2">DSM</span>
+          <span className="text-cyan-400">GRANITE</span>
+          <span className="text-zinc-600 ml-2">PROTOCOL</span>
         </div>
         
         <nav className="flex items-center gap-4">
@@ -414,7 +414,7 @@ const Dashboard = ({ user, onLogout }) => {
 
               {/* Mobile Milestones */}
               <div className="lg:hidden glass-card p-6 rounded-xl">
-                <h3 className="font-orbitron text-sm text-zinc-400 mb-4">12 LAWS PROGRESS</h3>
+                <h3 className="font-orbitron text-sm text-zinc-400 mb-4">THE CODEX PROGRESS</h3>
                 <div className="flex flex-wrap gap-2">
                   <MilestoneIcons currentHours={currentHours} />
                 </div>
