@@ -924,6 +924,189 @@ async def get_twelve_laws():
     """Get the 12 Laws of the Universe with unlock hours"""
     return TWELVE_LAWS
 
+# ==================== GOALS & STREAKS ====================
+
+@api_router.post("/user/intent")
+async def set_user_intent(data: UserGoalUpdate, request: Request):
+    """Set user's transmutation intent/goal"""
+    user = await get_current_user(request)
+    
+    valid_intents = ["shred", "clarity", "heal", "rebirth"]
+    if data.intent not in valid_intents:
+        raise HTTPException(status_code=400, detail="Invalid intent. Choose: shred, clarity, heal, rebirth")
+    
+    await db.users.update_one(
+        {"user_id": user["user_id"]},
+        {"$set": {"intent": data.intent, "intent_set_at": datetime.now(timezone.utc).isoformat()}}
+    )
+    
+    return {"status": "success", "intent": data.intent}
+
+@api_router.get("/user/stats")
+async def get_user_stats(request: Request):
+    """Get user stats including streaks, goals, and hydration"""
+    user = await get_current_user(request)
+    
+    # Get all transmutations
+    transmutations = await db.transmutations.find(
+        {"user_id": user["user_id"], "is_active": False},
+        {"_id": 0}
+    ).sort("end_time", -1).to_list(1000)
+    
+    total_hours = 0
+    for t in transmutations:
+        if t.get("start_time") and t.get("end_time"):
+            start_dt = datetime.fromisoformat(t["start_time"].replace('Z', '+00:00'))
+            end_dt = datetime.fromisoformat(t["end_time"].replace('Z', '+00:00'))
+            if start_dt.tzinfo is None:
+                start_dt = start_dt.replace(tzinfo=timezone.utc)
+            if end_dt.tzinfo is None:
+                end_dt = end_dt.replace(tzinfo=timezone.utc)
+            total_hours += (end_dt - start_dt).total_seconds() / 3600
+    
+    # Calculate streak (consecutive days with completed transmutations)
+    current_streak = 0
+    longest_streak = 0
+    
+    if transmutations:
+        today = datetime.now(timezone.utc).date()
+        streak_dates = set()
+        
+        for t in transmutations:
+            if t.get("end_time"):
+                end_dt = datetime.fromisoformat(t["end_time"].replace('Z', '+00:00'))
+                if end_dt.tzinfo is None:
+                    end_dt = end_dt.replace(tzinfo=timezone.utc)
+                streak_dates.add(end_dt.date())
+        
+        # Calculate current streak
+        check_date = today
+        while check_date in streak_dates or (check_date == today and today not in streak_dates):
+            if check_date in streak_dates:
+                current_streak += 1
+            check_date -= timedelta(days=1)
+            if check_date not in streak_dates and check_date != today:
+                break
+        
+        # Calculate longest streak
+        if streak_dates:
+            sorted_dates = sorted(streak_dates)
+            temp_streak = 1
+            for i in range(1, len(sorted_dates)):
+                if (sorted_dates[i] - sorted_dates[i-1]).days == 1:
+                    temp_streak += 1
+                else:
+                    longest_streak = max(longest_streak, temp_streak)
+                    temp_streak = 1
+            longest_streak = max(longest_streak, temp_streak)
+    
+    # Get today's hydration
+    today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    hydration_logs = await db.hydration_logs.find({
+        "user_id": user["user_id"],
+        "logged_at": {"$gte": today_start.isoformat()}
+    }).to_list(100)
+    
+    hydration_today = sum(log.get("amount_ml", 250) for log in hydration_logs)
+    last_hydration = hydration_logs[-1]["logged_at"] if hydration_logs else None
+    
+    return {
+        "total_transmutations": len(transmutations),
+        "total_hours": round(total_hours, 2),
+        "current_streak": current_streak,
+        "longest_streak": longest_streak,
+        "intent": user.get("intent"),
+        "hydration_today": hydration_today,
+        "hydration_goal": 3000,  # 3L recommended during fasting
+        "last_hydration": last_hydration,
+        "golden_badge": user.get("golden_badge", False)
+    }
+
+# ==================== HYDRATION TRACKING ====================
+
+@api_router.post("/hydration/log")
+async def log_hydration(data: HydrationLog, request: Request):
+    """Log water intake"""
+    user = await get_current_user(request)
+    
+    log_entry = {
+        "log_id": f"hyd_{uuid.uuid4().hex[:12]}",
+        "user_id": user["user_id"],
+        "amount_ml": data.amount_ml,
+        "has_electrolytes": data.has_electrolytes,
+        "logged_at": datetime.now(timezone.utc).isoformat()
+    }
+    
+    await db.hydration_logs.insert_one(log_entry)
+    
+    # Get today's total
+    today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    hydration_logs = await db.hydration_logs.find({
+        "user_id": user["user_id"],
+        "logged_at": {"$gte": today_start.isoformat()}
+    }).to_list(100)
+    
+    total_today = sum(log.get("amount_ml", 250) for log in hydration_logs)
+    
+    return {
+        "status": "success",
+        "amount_logged": data.amount_ml,
+        "total_today": total_today,
+        "hydration_goal": 3000,
+        "has_electrolytes": data.has_electrolytes
+    }
+
+@api_router.get("/hydration/today")
+async def get_today_hydration(request: Request):
+    """Get today's hydration stats"""
+    user = await get_current_user(request)
+    
+    today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    hydration_logs = await db.hydration_logs.find({
+        "user_id": user["user_id"],
+        "logged_at": {"$gte": today_start.isoformat()}
+    }, {"_id": 0}).to_list(100)
+    
+    total_ml = sum(log.get("amount_ml", 250) for log in hydration_logs)
+    electrolyte_count = sum(1 for log in hydration_logs if log.get("has_electrolytes"))
+    
+    return {
+        "total_ml": total_ml,
+        "goal_ml": 3000,
+        "percentage": min(100, round((total_ml / 3000) * 100)),
+        "glasses": len(hydration_logs),
+        "electrolyte_glasses": electrolyte_count,
+        "logs": hydration_logs
+    }
+
+@api_router.get("/hydration/tip")
+async def get_hydration_tip():
+    """Get hydration tips from the Granite Coach"""
+    tips = [
+        {
+            "tip": "During transmutation, your body releases stored water as glycogen depletes. Replenish with salt water (1/4 tsp sea salt per liter) to maintain electrolyte balance.",
+            "law": "The Law of Compensation"
+        },
+        {
+            "tip": "Minerals like magnesium, potassium, and sodium are crucial during fasting. They prevent cramping and support cellular energy production.",
+            "law": "The Law of Correspondence"
+        },
+        {
+            "tip": "Water is the universal solvent. As you fast, it carries toxins out and nutrients in. Drink before you feel thirsty - thirst means you're already depleted.",
+            "law": "The Law of Divine Oneness"
+        },
+        {
+            "tip": "Add a pinch of pink Himalayan salt to your water. The 84 trace minerals support your adrenals during the stress adaptation of fasting.",
+            "law": "The Law of Rhythm"
+        },
+        {
+            "tip": "Bone broth breaks a fast but is the ultimate refeeding tool. During your eating window, use it to restore gut lining and provide collagen.",
+            "law": "The Law of Perpetual Transmutation"
+        }
+    ]
+    import random
+    return random.choice(tips)
+
 @api_router.get("/")
 async def root():
     return {"message": "The Granite Fast Protocol API - Transmutation Tracker"}
