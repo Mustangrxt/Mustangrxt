@@ -3,6 +3,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Dialog, DialogContent } from '../components/ui/dialog';
 import { X } from 'lucide-react';
 
+// Color scheme for each Law - progressing through the spectrum
+const LAW_COLORS = {
+  1: { primary: '#00FFFF', secondary: '#00CED1', glow: 'rgba(0, 255, 255, 0.5)', bg: 'rgba(0, 100, 100, 0.15)' }, // Cyan
+  2: { primary: '#00BFFF', secondary: '#1E90FF', glow: 'rgba(0, 191, 255, 0.5)', bg: 'rgba(0, 80, 120, 0.15)' }, // Deep Sky Blue
+  3: { primary: '#4169E1', secondary: '#6495ED', glow: 'rgba(65, 105, 225, 0.5)', bg: 'rgba(40, 60, 140, 0.15)' }, // Royal Blue
+  4: { primary: '#8A2BE2', secondary: '#9370DB', glow: 'rgba(138, 43, 226, 0.5)', bg: 'rgba(75, 0, 130, 0.15)' }, // Blue Violet
+  5: { primary: '#9932CC', secondary: '#BA55D3', glow: 'rgba(153, 50, 204, 0.5)', bg: 'rgba(90, 30, 120, 0.15)' }, // Dark Orchid
+  6: { primary: '#DA70D6', secondary: '#EE82EE', glow: 'rgba(218, 112, 214, 0.5)', bg: 'rgba(130, 60, 130, 0.15)' }, // Orchid
+  7: { primary: '#FF69B4', secondary: '#FF1493', glow: 'rgba(255, 105, 180, 0.5)', bg: 'rgba(150, 50, 100, 0.15)' }, // Hot Pink
+  8: { primary: '#FF4500', secondary: '#FF6347', glow: 'rgba(255, 69, 0, 0.5)', bg: 'rgba(150, 40, 0, 0.15)' }, // Orange Red
+  9: { primary: '#FF8C00', secondary: '#FFA500', glow: 'rgba(255, 140, 0, 0.5)', bg: 'rgba(150, 80, 0, 0.15)' }, // Dark Orange
+  10: { primary: '#FFD700', secondary: '#FFDF00', glow: 'rgba(255, 215, 0, 0.5)', bg: 'rgba(150, 120, 0, 0.15)' }, // Gold
+  11: { primary: '#F0E68C', secondary: '#EEE8AA', glow: 'rgba(240, 230, 140, 0.5)', bg: 'rgba(140, 130, 60, 0.15)' }, // Khaki Gold
+  12: { primary: '#FFFACD', secondary: '#FAFAD2', glow: 'rgba(255, 250, 205, 0.6)', bg: 'rgba(150, 140, 80, 0.15)' }, // Lemon Chiffon (Pure Light)
+};
+
 export const LawModal = ({ 
   isOpen, 
   onClose, 
@@ -11,6 +27,7 @@ export const LawModal = ({
   if (!law) return null;
 
   const isUnlocked = law.isUnlocked;
+  const colors = LAW_COLORS[law.law_number] || LAW_COLORS[1];
   
   return (
     <AnimatePresence>
@@ -27,12 +44,21 @@ export const LawModal = ({
               transition={{ duration: 0.3 }}
               className="relative rounded-2xl overflow-hidden"
               style={{
-                background: 'linear-gradient(135deg, rgba(138, 43, 226, 0.15) 0%, rgba(75, 0, 130, 0.2) 50%, rgba(138, 43, 226, 0.1) 100%)',
+                background: `linear-gradient(135deg, ${colors.bg} 0%, rgba(10, 10, 10, 0.95) 50%, ${colors.bg} 100%)`,
                 backdropFilter: 'blur(24px)',
-                border: '1px solid rgba(138, 43, 226, 0.4)',
-                boxShadow: '0 0 40px rgba(138, 43, 226, 0.3), inset 0 0 60px rgba(138, 43, 226, 0.05)'
+                border: `1px solid ${colors.primary}40`,
+                boxShadow: `0 0 40px ${colors.glow}, inset 0 0 60px ${colors.bg}`
               }}
             >
+              {/* Animated border glow */}
+              <div 
+                className="absolute inset-0 rounded-2xl pointer-events-none"
+                style={{
+                  background: `linear-gradient(45deg, transparent 30%, ${colors.primary}20 50%, transparent 70%)`,
+                  animation: 'shimmer 3s infinite linear'
+                }}
+              />
+
               {/* Close button */}
               <button
                 onClick={onClose}
@@ -43,31 +69,42 @@ export const LawModal = ({
               </button>
 
               {/* Content */}
-              <div className="p-8 pt-12">
+              <div className="p-8 pt-12 relative z-10">
                 {/* Law Number Badge */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div 
+                  <motion.div 
                     className="w-16 h-16 rounded-xl flex items-center justify-center font-orbitron text-2xl font-bold"
                     style={{
                       background: isUnlocked 
-                        ? 'linear-gradient(135deg, rgba(138, 43, 226, 0.4) 0%, rgba(138, 43, 226, 0.2) 100%)'
+                        ? `linear-gradient(135deg, ${colors.primary}40 0%, ${colors.primary}20 100%)`
                         : 'rgba(30, 30, 30, 0.8)',
-                      border: `2px solid ${isUnlocked ? 'rgba(138, 43, 226, 0.6)' : 'rgba(60, 60, 60, 0.5)'}`,
-                      color: isUnlocked ? '#8A2BE2' : '#52525B',
-                      boxShadow: isUnlocked ? '0 0 20px rgba(138, 43, 226, 0.4)' : 'none'
+                      border: `2px solid ${isUnlocked ? colors.primary : 'rgba(60, 60, 60, 0.5)'}`,
+                      color: isUnlocked ? colors.primary : '#52525B',
+                      boxShadow: isUnlocked ? `0 0 20px ${colors.glow}` : 'none'
                     }}
+                    animate={isUnlocked ? {
+                      boxShadow: [
+                        `0 0 20px ${colors.glow}`,
+                        `0 0 30px ${colors.glow}`,
+                        `0 0 20px ${colors.glow}`
+                      ]
+                    } : {}}
+                    transition={{ duration: 2, repeat: Infinity }}
                   >
                     {law.law_number}
-                  </div>
+                  </motion.div>
                   <div>
-                    <div className="text-xs text-violet-400/70 font-mono tracking-widest mb-1">
+                    <div 
+                      className="text-xs font-mono tracking-widest mb-1"
+                      style={{ color: `${colors.primary}90` }}
+                    >
                       LAW {law.law_number} OF 12
                     </div>
                     <h2 
                       className="font-orbitron text-2xl font-bold"
                       style={{
-                        color: isUnlocked ? '#DDA0DD' : '#71717A',
-                        textShadow: isUnlocked ? '0 0 20px rgba(138, 43, 226, 0.5)' : 'none'
+                        color: isUnlocked ? colors.secondary : '#71717A',
+                        textShadow: isUnlocked ? `0 0 20px ${colors.glow}` : 'none'
                       }}
                     >
                       {law.name}
@@ -75,15 +112,15 @@ export const LawModal = ({
                   </div>
                 </div>
 
-                {/* Phase */}
+                {/* Phase Badge */}
                 <div 
                   className="inline-block px-4 py-2 rounded-lg mb-6"
                   style={{
-                    background: 'rgba(138, 43, 226, 0.15)',
-                    border: '1px solid rgba(138, 43, 226, 0.3)'
+                    background: `${colors.primary}15`,
+                    border: `1px solid ${colors.primary}30`
                   }}
                 >
-                  <span className="text-violet-300 font-mono text-sm">
+                  <span style={{ color: colors.primary }} className="font-mono text-sm">
                     Fasting Phase: <span className="font-bold">{law.phase}</span>
                   </span>
                 </div>
@@ -94,8 +131,8 @@ export const LawModal = ({
                   <h3 
                     className="font-orbitron text-xl"
                     style={{
-                      color: '#C9A0DC',
-                      textShadow: '0 0 10px rgba(138, 43, 226, 0.3)'
+                      color: colors.secondary,
+                      textShadow: `0 0 10px ${colors.glow}`
                     }}
                   >
                     {law.title}
@@ -113,16 +150,28 @@ export const LawModal = ({
                 </p>
 
                 {/* Status indicator */}
-                <div className="mt-8 pt-6 border-t border-violet-500/20">
+                <div 
+                  className="mt-8 pt-6"
+                  style={{ borderTop: `1px solid ${colors.primary}20` }}
+                >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div 
-                        className={`w-3 h-3 rounded-full ${isUnlocked ? 'bg-violet-400 glow-violet' : 'bg-zinc-600'}`}
+                      <motion.div 
+                        className="w-3 h-3 rounded-full"
                         style={{
-                          animation: isUnlocked ? 'pulse 2s infinite' : 'none'
+                          backgroundColor: isUnlocked ? colors.primary : '#52525B',
+                          boxShadow: isUnlocked ? `0 0 10px ${colors.glow}` : 'none'
                         }}
+                        animate={isUnlocked ? {
+                          scale: [1, 1.2, 1],
+                          opacity: [1, 0.7, 1]
+                        } : {}}
+                        transition={{ duration: 2, repeat: Infinity }}
                       />
-                      <span className={`text-sm font-medium ${isUnlocked ? 'text-violet-300' : 'text-zinc-500'}`}>
+                      <span 
+                        className="text-sm font-medium"
+                        style={{ color: isUnlocked ? colors.primary : '#52525B' }}
+                      >
                         {isUnlocked ? 'ACTIVATED' : 'LOCKED'}
                       </span>
                     </div>
