@@ -16,6 +16,22 @@ import {
 } from 'lucide-react';
 import { LawModal } from './LawModal';
 
+// Color scheme for each Law - progressing through the spectrum
+const LAW_COLORS = {
+  1: { primary: '#00FFFF', glow: 'rgba(0, 255, 255, 0.5)' }, // Cyan
+  2: { primary: '#00BFFF', glow: 'rgba(0, 191, 255, 0.5)' }, // Deep Sky Blue
+  3: { primary: '#4169E1', glow: 'rgba(65, 105, 225, 0.5)' }, // Royal Blue
+  4: { primary: '#8A2BE2', glow: 'rgba(138, 43, 226, 0.5)' }, // Blue Violet
+  5: { primary: '#9932CC', glow: 'rgba(153, 50, 204, 0.5)' }, // Dark Orchid
+  6: { primary: '#DA70D6', glow: 'rgba(218, 112, 214, 0.5)' }, // Orchid
+  7: { primary: '#FF69B4', glow: 'rgba(255, 105, 180, 0.5)' }, // Hot Pink
+  8: { primary: '#FF4500', glow: 'rgba(255, 69, 0, 0.5)' }, // Orange Red
+  9: { primary: '#FF8C00', glow: 'rgba(255, 140, 0, 0.5)' }, // Dark Orange
+  10: { primary: '#FFD700', glow: 'rgba(255, 215, 0, 0.5)' }, // Gold
+  11: { primary: '#F0E68C', glow: 'rgba(240, 230, 140, 0.5)' }, // Khaki Gold
+  12: { primary: '#FFFACD', glow: 'rgba(255, 250, 205, 0.6)' }, // Lemon Chiffon (Pure Light)
+};
+
 // Updated 12 Laws with new data structure
 const LAWS = [
   { law_number: 1, name: "Divine Oneness", icon: Globe, hours_start: 0, hours_end: 8, phase: "0-8 Hours", title: "The Connection", breakdown: "Your body is not separate from your mind. As your blood sugar stabilizes, you realize that every choice you make ripples through your entire existence." },
@@ -36,12 +52,6 @@ export const MilestoneIcons = ({ currentHours = 0 }) => {
   const [selectedLaw, setSelectedLaw] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const getStageColor = (hours) => {
-    if (hours >= 72) return { primary: '#FFD700', glow: 'rgba(255, 215, 0, 0.5)' };
-    if (hours >= 24) return { primary: '#8A2BE2', glow: 'rgba(138, 43, 226, 0.5)' };
-    return { primary: '#00FFFF', glow: 'rgba(0, 255, 255, 0.5)' };
-  };
-
   const handleLawClick = (law, isUnlocked) => {
     setSelectedLaw({ ...law, isUnlocked });
     setIsModalOpen(true);
@@ -54,13 +64,13 @@ export const MilestoneIcons = ({ currentHours = 0 }) => {
           const isUnlocked = currentHours >= law.hours_start;
           const isActive = currentHours >= law.hours_start && currentHours < law.hours_end;
           const isNext = !isUnlocked && (index === 0 || currentHours >= LAWS[index - 1].hours_start);
-          const color = getStageColor(law.hours_start);
+          const color = LAW_COLORS[law.law_number];
           const Icon = law.icon;
 
           return (
             <motion.div
               key={law.name}
-              className={`relative cursor-pointer ${isUnlocked ? 'milestone-active' : ''}`}
+              className={`relative cursor-pointer ${isActive ? 'milestone-active' : ''}`}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.05 }}
@@ -71,7 +81,7 @@ export const MilestoneIcons = ({ currentHours = 0 }) => {
             >
               {/* Hexagonal container */}
               <div 
-                className="relative w-12 h-12 flex items-center justify-center"
+                className="relative w-12 h-12 flex items-center justify-center transition-transform hover:scale-110"
                 style={{
                   clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
                 }}
@@ -125,7 +135,8 @@ export const MilestoneIcons = ({ currentHours = 0 }) => {
               {/* Next indicator */}
               {isNext && (
                 <motion.div 
-                  className="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-cyan-400"
+                  className="absolute -right-1 -top-1 w-2 h-2 rounded-full"
+                  style={{ backgroundColor: color.primary }}
                   animate={{
                     scale: [1, 1.3, 1],
                     opacity: [1, 0.5, 1]
