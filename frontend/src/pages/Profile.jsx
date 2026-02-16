@@ -268,7 +268,12 @@ const Profile = ({ user, onRefreshUser }) => {
             >
               <div className="text-center mb-6">
                 <Crown className="w-12 h-12 text-violet-400 mx-auto mb-4" />
-                <h2 className="font-orbitron text-2xl font-bold tracking-wider text-violet-400 mb-2">THE GRANITE FAST PROTOCOL PRO</h2>
+                <h2 className="font-orbitron text-2xl font-bold tracking-wider mb-2">
+                  <span className="text-cyan-400 text-glow-cyan">THE GRANITE</span>
+                  <br />
+                  <span className="text-zinc-300">FAST PROTOCOL</span>
+                  <span className="text-yellow-400 text-glow-gold ml-2">PRO</span>
+                </h2>
                 <p className="text-zinc-500">Unlock your full potential</p>
               </div>
 
