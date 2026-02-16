@@ -31,6 +31,8 @@ const Dashboard = ({ user, onLogout }) => {
   const [currentHours, setCurrentHours] = useState(0);
   const [goalHours, setGoalHours] = useState(24);
   const [isTimeTravelOpen, setIsTimeTravelOpen] = useState(false);
+  const [isFoodPyramidOpen, setIsFoodPyramidOpen] = useState(false);
+  const [completedHours, setCompletedHours] = useState(0);
   const [stats, setStats] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
