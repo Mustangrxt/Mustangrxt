@@ -1,0 +1,56 @@
+{
+  "summary": "9/10 tests passed",
+  "results": [
+    {
+      "test": "Root API endpoint",
+      "status": "PASS",
+      "details": "Response: {'message': 'Pathfinder DSM API - Transmutation Tracker'}"
+    },
+    {
+      "test": "12 Laws endpoint",
+      "status": "PASS",
+      "details": "Found 12 laws"
+    },
+    {
+      "test": "Create test session",
+      "status": "PASS",
+      "details": "Session: test_session_913c03e92c014193b0c4b07f186f415c"
+    },
+    {
+      "test": "Auth me endpoint",
+      "status": "PASS",
+      "details": "User: Test User"
+    },
+    {
+      "test": "Create transmutation",
+      "status": "FAIL",
+      "details": "{'transmutation_id': 'trans_77d61d5d81c2', 'user_id': 'test_user_5cce51923363', 'goal_hours': 24.0, 'start_time': '2026-02-16T07:58:18.538942+00:00', 'end_time': None, 'is_active': True, 'total_hours': 4.037611111111112e-05, 'laws_unlocked': [], 'created_at': '2026-02-16T07:58:18.674617+00:00'}"
+    },
+    {
+      "test": "Get active transmutation",
+      "status": "PASS",
+      "details": "Active: True"
+    },
+    {
+      "test": "Get transmutation stats",
+      "status": "PASS",
+      "details": "Total: 1"
+    },
+    {
+      "test": "Coach prompts remaining",
+      "status": "PASS",
+      "details": "Remaining: 5"
+    },
+    {
+      "test": "Coach chat",
+      "status": "PASS",
+      "details": "Flesh response: 618 chars"
+    },
+    {
+      "test": "Subscription checkout",
+      "status": "PASS",
+      "details": "Session ID: cs_test_a1f0k0oEP1R2..."
+    }
+  ],
+  "timestamp": "2026-02-16T07:58:24.137141"
+}
