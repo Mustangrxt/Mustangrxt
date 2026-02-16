@@ -363,9 +363,17 @@ const Landing = () => {
       {/* Footer */}
       <footer className="border-t border-zinc-900 py-12 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="font-orbitron text-xl tracking-wider">
-            <span className="text-cyan-400">GRANITE</span>
-            <span className="text-zinc-600 ml-2">PROTOCOL</span>
+          <div className="flex items-center gap-3">
+            <img 
+              src="/pathfinder-logo.png" 
+              alt="Pathfinder" 
+              className="w-7 h-7"
+              style={{ filter: 'brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(155deg)' }}
+            />
+            <div className="font-orbitron text-xl tracking-wider">
+              <span className="text-cyan-400">GRANITE</span>
+              <span className="text-zinc-600 ml-2">PROTOCOL</span>
+            </div>
           </div>
           <div className="text-zinc-600 text-sm">
             Transmute your potential. Unlock your spirit.
