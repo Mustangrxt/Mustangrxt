@@ -163,7 +163,7 @@ EMERGENT_LLM_KEY=sk-emergent-***
 STRIPE_API_KEY=sk_test_emergent
 
 # Frontend (.env)
-REACT_APP_BACKEND_URL=https://fast-life.preview.emergentagent.com
+REACT_APP_BACKEND_URL=https://granite-fast-1.preview.emergentagent.com
 ```
 
 ## Next Steps

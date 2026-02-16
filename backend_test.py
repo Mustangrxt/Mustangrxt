@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 
 class PathfinderDSMTester:
     def __init__(self):
-        self.base_url = "https://fast-life.preview.emergentagent.com/api"
+        self.base_url = "https://granite-fast-1.preview.emergentagent.com/api"
         self.session_token = None
         self.user_data = None
         self.tests_run = 0
@@ -210,7 +210,7 @@ class PathfinderDSMTester:
             
         success, result = self.run_request('POST', '/subscription/checkout', {
             "plan": "monthly",
-            "origin_url": "https://fast-life.preview.emergentagent.com"
+            "origin_url": "https://granite-fast-1.preview.emergentagent.com"
         })
         
         is_valid = success and result.get('url') and result.get('session_id')
