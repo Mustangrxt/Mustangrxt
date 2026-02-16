@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
+import { FloatingCoach } from "@/components/FloatingCoach";
 
 // Pages
 import Landing from "@/pages/Landing";
