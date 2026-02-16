@@ -130,6 +130,14 @@ const AppRouter = () => {
         element={user ? <Navigate to="/dashboard" replace /> : <Landing />} 
       />
       <Route 
+        path="/initiation" 
+        element={
+          <ProtectedRoute user={user} isLoading={isLoading}>
+            <Initiation />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
         path="/dashboard" 
         element={
           <ProtectedRoute user={user} isLoading={isLoading}>
