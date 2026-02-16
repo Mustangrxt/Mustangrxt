@@ -129,8 +129,10 @@ const Dashboard = ({ user, onLogout }) => {
       if (response.ok) {
         const data = await response.json();
         toast.success(`Transmutation complete. ${data.total_hours.toFixed(2)} hours achieved.`);
+        setCompletedHours(data.total_hours);
         setActiveTransmutation(null);
         setCurrentHours(0);
+        setIsFoodPyramidOpen(true);
         fetchStats();
       }
     } catch (error) {
