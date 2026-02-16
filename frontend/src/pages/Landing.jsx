@@ -220,31 +220,43 @@ const Landing = () => {
               </h2>
             </div>
             <p className="text-zinc-500 max-w-xl mx-auto">
-              Everything you need to transform your transmutation practice into a spiritual journey.
+              Forge your physique through the 12 Laws: Transmute spiritual sovereignty into biological transformation.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass-card p-8 rounded-xl hover:border-cyan-400/30 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-lg bg-cyan-400/10 flex items-center justify-center mb-6 group-hover:glow-cyan transition-all">
-                  <feature.icon className="w-6 h-6 text-cyan-400" />
-                </div>
-                <h3 className="font-orbitron text-lg font-bold text-zinc-100 mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
+            {features.map((feature, index) => {
+              const colorClasses = {
+                cyan: { bg: 'bg-cyan-400/10', text: 'text-cyan-400', border: 'hover:border-cyan-400/30', glow: 'group-hover:shadow-[0_0_20px_rgba(0,255,255,0.3)]' },
+                violet: { bg: 'bg-violet-400/10', text: 'text-violet-400', border: 'hover:border-violet-400/30', glow: 'group-hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]' },
+                orange: { bg: 'bg-orange-400/10', text: 'text-orange-400', border: 'hover:border-orange-400/30', glow: 'group-hover:shadow-[0_0_20px_rgba(251,146,60,0.3)]' },
+                emerald: { bg: 'bg-emerald-400/10', text: 'text-emerald-400', border: 'hover:border-emerald-400/30', glow: 'group-hover:shadow-[0_0_20px_rgba(52,211,153,0.3)]' },
+                yellow: { bg: 'bg-yellow-400/10', text: 'text-yellow-400', border: 'hover:border-yellow-400/30', glow: 'group-hover:shadow-[0_0_20px_rgba(250,204,21,0.3)]' },
+                rose: { bg: 'bg-rose-400/10', text: 'text-rose-400', border: 'hover:border-rose-400/30', glow: 'group-hover:shadow-[0_0_20px_rgba(251,113,133,0.3)]' }
+              };
+              const colors = colorClasses[feature.color];
+              
+              return (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`glass-card p-8 rounded-xl ${colors.border} ${colors.glow} transition-all group`}
+                >
+                  <div className={`w-12 h-12 rounded-lg ${colors.bg} flex items-center justify-center mb-6 transition-all`}>
+                    <feature.icon className={`w-6 h-6 ${colors.text}`} />
+                  </div>
+                  <h3 className={`text-lg font-bold ${colors.text} mb-3`}>
+                    {feature.title}
+                  </h3>
+                  <p className="text-zinc-500 text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
