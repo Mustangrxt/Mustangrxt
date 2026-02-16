@@ -173,8 +173,11 @@ const Dashboard = ({ user, onLogout }) => {
           <img 
             src="/pathfinder-logo.png" 
             alt="Pathfinder" 
-            className="w-8 h-8"
-            style={{ filter: 'brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(155deg)' }}
+            className="w-9 h-9"
+            style={{ 
+              filter: 'invert(83%) sepia(67%) saturate(1000%) hue-rotate(130deg) brightness(104%) contrast(104%)',
+              opacity: 0.9
+            }}
           />
           <div className="font-orbitron text-xl tracking-wider">
             <span className="text-cyan-400">GRANITE</span>
