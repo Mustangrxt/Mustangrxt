@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { Toaster } from "../components/ui/sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 // Pages
-import Landing from "./pages/Landing";
-import Dashboard from "./pages/Dashboard";
-import Coach from "./pages/Coach";
-import Profile from "./pages/Profile";
-import AuthCallback from "./pages/AuthCallback";
+import Landing from "@/pages/Landing";
+import Dashboard from "@/pages/Dashboard";
+import Coach from "@/pages/Coach";
+import Profile from "@/pages/Profile";
+import AuthCallback from "@/pages/AuthCallback";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
