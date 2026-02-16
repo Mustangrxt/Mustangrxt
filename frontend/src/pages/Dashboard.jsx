@@ -261,7 +261,7 @@ const Dashboard = ({ user, onLogout }) => {
                       data-testid="start-transmutation-btn"
                     >
                       <Play className="w-5 h-5 mr-2" />
-                      Begin Transmutation
+                      BEGIN TRANSMUTATION
                     </Button>
                   </div>
                 ) : (
