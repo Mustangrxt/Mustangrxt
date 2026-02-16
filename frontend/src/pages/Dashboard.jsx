@@ -216,7 +216,7 @@ const Dashboard = ({ user, onLogout }) => {
             <div className="hidden lg:block lg:col-span-2">
               <div className="sticky top-24">
                 <h3 className="font-orbitron text-xs text-zinc-600 tracking-widest mb-6">
-                  12 LAWS
+                  THE CODEX
                 </h3>
                 <MilestoneIcons currentHours={currentHours} />
               </div>
