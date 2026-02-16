@@ -169,20 +169,9 @@ const Dashboard = ({ user, onLogout }) => {
 
       {/* Header */}
       <header className="relative z-10 flex items-center justify-between p-6 border-b border-zinc-900">
-        <div className="flex items-center gap-3">
-          <img 
-            src="/pathfinder-logo.png" 
-            alt="Pathfinder" 
-            className="w-9 h-9"
-            style={{ 
-              filter: 'invert(83%) sepia(67%) saturate(1000%) hue-rotate(130deg) brightness(104%) contrast(104%)',
-              opacity: 0.9
-            }}
-          />
-          <div className="font-orbitron text-xl tracking-wider">
-            <span className="text-cyan-400">GRANITE</span>
-            <span className="text-zinc-600 ml-2">PROTOCOL</span>
-          </div>
+        <div className="font-orbitron text-xl tracking-wider">
+          <span className="text-cyan-400">GRANITE</span>
+          <span className="text-zinc-600 ml-2">PROTOCOL</span>
         </div>
         
         <nav className="flex items-center gap-4">
