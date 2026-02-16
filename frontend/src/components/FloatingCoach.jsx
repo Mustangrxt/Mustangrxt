@@ -1,12 +1,42 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Loader2, Info } from 'lucide-react';
+import { MessageSquare, X, Send, Loader2, Info, Navigation } from 'lucide-react';
 import { Button } from './ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+// Navigation keywords and their routes
+const navigationMap = {
+  'welcome': '/initiation-preview',
+  'onboarding': '/initiation-preview',
+  'initiation': '/initiation-preview',
+  'start': '/initiation-preview',
+  'begin': '/initiation-preview',
+  'dashboard': '/dashboard',
+  'home': '/dashboard',
+  'main': '/dashboard',
+  'timer': '/dashboard',
+  'coach': '/coach',
+  'chat': '/coach',
+  'ask': '/coach',
+  'profile': '/profile',
+  'account': '/profile',
+  'settings': '/profile',
+  'subscription': '/profile',
+  'history': '/profile',
+  'food': '/food-pyramid',
+  'pyramid': '/food-pyramid',
+  'eating': '/food-pyramid',
+  'hydration': '/dashboard',
+  'water': '/dashboard',
+  'landing': '/',
+  'logout': '/'
+};
+
 const FloatingCoach = ({ user }) => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -42,12 +72,44 @@ const FloatingCoach = ({ user }) => {
     }
   };
 
+  // Check for navigation intent
+  const checkNavigation = (message) => {
+    const lowerMsg = message.toLowerCase();
+    const navKeywords = ['where', 'take me', 'go to', 'navigate', 'show me', 'open', 'find'];
+    const hasNavIntent = navKeywords.some(kw => lowerMsg.includes(kw));
+    
+    if (hasNavIntent) {
+      for (const [keyword, route] of Object.entries(navigationMap)) {
+        if (lowerMsg.includes(keyword)) {
+          return { route, keyword };
+        }
+      }
+    }
+    return null;
+  };
+
   const handleSend = async () => {
     if (!input.trim() || isLoading || !user) return;
 
     const userMessage = input.trim();
     setInput('');
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    
+    // Check for navigation intent first
+    const navIntent = checkNavigation(userMessage);
+    if (navIntent) {
+      setMessages(prev => [...prev, {
+        role: 'navigation',
+        content: `Taking you to the ${navIntent.keyword} page...`,
+        route: navIntent.route
+      }]);
+      setTimeout(() => {
+        navigate(navIntent.route);
+        setIsOpen(false);
+      }, 1000);
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -62,6 +124,7 @@ const FloatingCoach = ({ user }) => {
         const data = await response.json();
         setMessages(prev => [...prev, {
           role: 'assistant',
+          content: data.response || data.flesh,
           flesh: data.flesh,
           spirit: data.spirit
         }]);
