@@ -269,6 +269,9 @@ const Landing = () => {
             <p className="text-zinc-500 max-w-xl mx-auto">
               12 Laws of Transmutation - Biological & Spiritual Alignment
             </p>
+            <p className="text-zinc-400 italic text-sm mt-3">
+              "The body breaks so the self can be realized"
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
