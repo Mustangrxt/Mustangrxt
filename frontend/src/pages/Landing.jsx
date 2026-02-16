@@ -199,9 +199,20 @@ const Landing = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
-              The Sacred Tools
-            </h2>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <img 
+                src="/pathfinder-logo.png" 
+                alt="" 
+                className="w-8 h-8"
+                style={{ 
+                  filter: 'invert(83%) sepia(67%) saturate(1000%) hue-rotate(130deg) brightness(104%) contrast(104%)',
+                  opacity: 0.9
+                }}
+              />
+              <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-cyan-400">
+                The Sacred Tools
+              </h2>
+            </div>
             <p className="text-zinc-500 max-w-xl mx-auto">
               Everything you need to transform your transmutation practice into a spiritual journey.
             </p>
