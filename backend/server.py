@@ -80,6 +80,23 @@ class PaymentStatusResponse(BaseModel):
     payment_status: str
     is_pro: bool
 
+class UserGoalUpdate(BaseModel):
+    intent: str  # shred, clarity, heal, rebirth
+    
+class HydrationLog(BaseModel):
+    amount_ml: int = 250  # default glass size
+    has_electrolytes: bool = False
+
+class UserStatsResponse(BaseModel):
+    total_transmutations: int
+    total_hours: float
+    current_streak: int
+    longest_streak: int
+    intent: Optional[str] = None
+    hydration_today: int
+    hydration_goal: int
+    last_hydration: Optional[str] = None
+
 # ==================== THE PATHFINDER CODEX: 12 LAWS OF TRANSMUTATION ====================
 
 TWELVE_LAWS = [
