@@ -27,12 +27,12 @@ const Landing = () => {
     {
       icon: Clock,
       title: "Transmutation Timer",
-      description: "Track your journey with a real-time Hero Ring that evolves through three spiritual phases."
+      description: "Track your journey with a real-time Hero Ring that evolves through the 12 Laws of the Universe."
     },
     {
       icon: Sparkles,
-      title: "12 Laws Milestones",
-      description: "Unlock the 12 Laws of the Universe as you progress through your transmutation."
+      title: "The Pathfinder Codex",
+      description: "Unlock the 12 Laws of Transmutation with detailed biological and spiritual breakdowns."
     },
     {
       icon: Brain,
@@ -41,24 +41,24 @@ const Landing = () => {
     },
     {
       icon: MessageSquare,
-      title: "Granite Coach",
+      title: "The Granite Coach",
       description: "AI-powered guidance providing insights on both the Flesh and the Spirit of your journey."
     },
     {
       icon: Flame,
-      title: "100hr Golden Badge",
-      description: "Achieve transcendence and earn the permanent Golden Solar Flare status."
+      title: "100hr Transcendence",
+      description: "Achieve the ultimate state and unlock Stem Cell Regeneration - become the Creator of your Vessel."
     },
     {
       icon: Crown,
-      title: "Pathfinder Pro",
+      title: "Protocol Pro",
       description: "Unlimited AI coaching and advanced analytics for serious practitioners."
     }
   ];
 
   const pricingPlans = [
     {
-      name: "Pathfinder",
+      name: "Protocol Free",
       price: "Free",
       period: "",
       features: [
@@ -72,7 +72,7 @@ const Landing = () => {
       highlighted: false
     },
     {
-      name: "Pathfinder Pro",
+      name: "Protocol Pro",
       price: "$9.99",
       period: "/month",
       yearlyPrice: "$69.99/year",
@@ -103,20 +103,32 @@ const Landing = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-orbitron text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-wider">
-              <span className="text-glow-cyan text-cyan-400">PATHFINDER</span>
+            {/* Protocol Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-block mb-6"
+            >
+              <div className="px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-sm font-mono tracking-widest">
+                THE PATHFINDER CODEX
+              </div>
+            </motion.div>
+
+            <h1 className="font-orbitron text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-wider">
+              <span className="text-glow-cyan text-cyan-400">THE GRANITE</span>
               <br />
-              <span className="text-zinc-300">DSM</span>
+              <span className="text-zinc-300">FAST PROTOCOL</span>
             </h1>
             
             <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
               Transform your relationship with fasting.
               <br />
-              <span className="text-cyan-400">Transmute</span> biology into spirituality.
+              <span className="text-cyan-400">Transmute</span> biology into spirituality through the 12 Laws.
             </p>
             
             <p className="text-zinc-600 text-sm md:text-base max-w-xl mx-auto mb-12">
-              Track your transmutation journey through the 12 Laws of the Universe
+              Track your transmutation journey through the Pathfinder Codex
               with real-time visualization and AI-powered guidance.
             </p>
 
@@ -126,7 +138,7 @@ const Landing = () => {
                 className="btn-pathfinder text-lg px-8 py-6 font-orbitron tracking-wider"
                 data-testid="start-transmuting-btn"
               >
-                Start Transmuting
+                Begin Protocol
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button 
@@ -211,6 +223,61 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* 12 Laws Preview */}
+      <section className="relative py-32 px-6 bg-zinc-950/50">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-violet-400 mb-4">
+              The Pathfinder Codex
+            </h2>
+            <p className="text-zinc-500 max-w-xl mx-auto">
+              12 Laws of Transmutation - Biological & Spiritual Alignment
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              { num: 1, name: "Divine Oneness", phase: "0-8h" },
+              { num: 2, name: "Vibration", phase: "9-16h" },
+              { num: 3, name: "Action", phase: "17-24h" },
+              { num: 4, name: "Correspondence", phase: "25-32h" },
+              { num: 5, name: "Cause & Effect", phase: "33-40h" },
+              { num: 6, name: "Compensation", phase: "41-48h" },
+              { num: 7, name: "Attraction", phase: "49-56h" },
+              { num: 8, name: "Transmutation", phase: "57-64h" },
+              { num: 9, name: "Relativity", phase: "65-72h" },
+              { num: 10, name: "Polarity", phase: "73-80h" },
+              { num: 11, name: "Rhythm", phase: "81-90h" },
+              { num: 12, name: "Creation", phase: "91-100h+" },
+            ].map((law, index) => (
+              <motion.div
+                key={law.num}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="p-4 rounded-lg glass-card text-center hover:border-violet-400/30 transition-all"
+              >
+                <div className="text-violet-400 font-orbitron text-2xl font-bold mb-1">
+                  {law.num}
+                </div>
+                <div className="text-zinc-300 text-sm font-medium mb-1">
+                  {law.name}
+                </div>
+                <div className="text-zinc-600 text-xs font-mono">
+                  {law.phase}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section */}
       <section id="pricing" className="relative py-32 px-6">
         <div className="max-w-4xl mx-auto">
@@ -220,7 +287,7 @@ const Landing = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-violet-400 mb-4">
+            <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-yellow-400 mb-4">
               Choose Your Path
             </h2>
             <p className="text-zinc-500 max-w-xl mx-auto">
@@ -291,8 +358,8 @@ const Landing = () => {
       <footer className="border-t border-zinc-900 py-12 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="font-orbitron text-xl tracking-wider">
-            <span className="text-cyan-400">PATHFINDER</span>
-            <span className="text-zinc-600 ml-2">DSM</span>
+            <span className="text-cyan-400">GRANITE</span>
+            <span className="text-zinc-600 ml-2">PROTOCOL</span>
           </div>
           <div className="text-zinc-600 text-sm">
             Transmute your potential. Unlock your spirit.
