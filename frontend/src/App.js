@@ -10,6 +10,7 @@ import Coach from "@/pages/Coach";
 import Profile from "@/pages/Profile";
 import AuthCallback from "@/pages/AuthCallback";
 import FoodPyramidPreview from "@/pages/FoodPyramidPreview";
+import Initiation from "@/pages/Initiation";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
