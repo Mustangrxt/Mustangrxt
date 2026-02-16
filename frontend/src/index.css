@@ -44,7 +44,7 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Outfit', 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #000000;
@@ -56,6 +56,11 @@ body {
 h1, h2, h3, .font-orbitron {
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 0.05em;
+}
+
+/* Outfit for body text */
+p, span, div, button, input, textarea, label {
+    font-family: 'Outfit', 'Google Sans', sans-serif;
 }
 
 /* JetBrains Mono for data */
