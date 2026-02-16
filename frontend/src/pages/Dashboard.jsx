@@ -436,6 +436,13 @@ const Dashboard = ({ user, onLogout }) => {
         currentStartTime={activeTransmutation?.start_time}
         onSave={handleTimeTravel}
       />
+
+      {/* Food Pyramid Modal - Eating Window Guide */}
+      <FoodPyramidModal
+        isOpen={isFoodPyramidOpen}
+        onClose={() => setIsFoodPyramidOpen(false)}
+        hoursCompleted={completedHours}
+      />
     </div>
   );
 };
