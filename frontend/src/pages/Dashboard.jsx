@@ -7,6 +7,8 @@ import { GoldenParticles } from '../components/GoldenParticles';
 import { TimeTravelModal } from '../components/TimeTravelModal';
 import { FoodPyramidModal } from '../components/FoodPyramidModal';
 import { FlowerOfLife } from '../components/FlowerOfLife';
+import { HydrationTracker } from '../components/HydrationTracker';
+import { UserStats } from '../components/UserStats';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { 
